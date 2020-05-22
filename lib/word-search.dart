@@ -191,8 +191,12 @@ class WordSearch {
     // traverse the squares to determine if the word fits
     for (var i = 0; i < word.length; i++) {
       final WSPosition next = fnGetSquare(x, y, i);
-      String square = puzzle[next.y][next.x];
-
+      String square;
+      try {
+        square = puzzle[next.y][next.x];
+      } catch (_e) {
+        square = null;
+      }
       // if the puzzle square already contains the letter we
       // are looking for, then count it as an overlap square
       if (square == word[i]) {
@@ -247,7 +251,12 @@ class WordSearch {
   ) {
     for (var i = 0; i < word.length; i++) {
       final WSPosition next = fnGetSquare(x, y, i);
-      puzzle[next.y][next.x] = word[i];
+      try {
+        puzzle[next.y][next.x] = word[i];
+      } catch(e) {
+        print(e);
+        print(e.toString());
+      }
     }
   }
 
