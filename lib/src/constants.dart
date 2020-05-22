@@ -94,6 +94,31 @@ class WSNewPuzzle {
   })  : wordsNotPlaced = wordsNotPlaced ?? [],
         warnings = warnings ?? [],
         errors = errors ?? [];
+
+  /// Outputs a puzzle to the console, useful for debugging.
+  /// Returns a formatted string representing the puzzle.
+  ///
+  /// Example:
+  /// ```
+  /// final List<String> wl = ['hello', 'world', 'foo', 'bar', 'baz', 'dart'];
+  /// final WSSettings ws = WSSettings();
+  /// final WordSearch wordSearch = WordSearch();
+  /// final WSNewPuzzle newPuzzle = wordSearch.newPuzzle(wl, ws);
+  /// // Outputs the 2D puzzle
+  /// print(newPuzzle.toString());
+  /// ``` 
+  @override
+  String toString() {
+    var puzzleString = '';
+    for (var i = 0, height = puzzle.length; i < height; i++) {
+      var row = puzzle[i];
+      for (var j = 0, width = row.length; j < width; j++) {
+        puzzleString += (row[j] == '' ? ' ' : row[j]) + ' ';
+      }
+      puzzleString += '\n';
+    }
+    return puzzleString;
+  }
 }
 
 /// The solved puzzle interface

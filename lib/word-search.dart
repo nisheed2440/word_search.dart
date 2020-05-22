@@ -423,29 +423,4 @@ class WordSearch {
     // Return the output
     return output;
   }
-
-  /// Outputs a puzzle to the console, useful for debugging.
-  /// Returns a formatted string representing the puzzle.
-  ///
-  /// Example:
-  /// ```
-  /// final List<String> wl = ['hello', 'world', 'foo', 'bar', 'baz', 'dart'];
-  /// final WSSettings ws = WSSettings();
-  /// final WordSearch wordSearch = WordSearch();
-  /// final WSNewPuzzle newPuzzle = wordSearch.newPuzzle(wl, ws);
-  /// final String output = wordSearch.printPuzzle(newPuzzle.puzzle);
-  /// // Outputs the 2D puzzle
-  /// print(output);
-  /// ```
-  String printPuzzle(List<List<String>> puzzle) {
-    var puzzleString = '';
-    for (var i = 0, height = puzzle.length; i < height; i++) {
-      var row = puzzle[i];
-      for (var j = 0, width = row.length; j < width; j++) {
-        puzzleString += (row[j] == '' ? ' ' : row[j]) + ' ';
-      }
-      puzzleString += '\n';
-    }
-    return puzzleString;
-  }
 }

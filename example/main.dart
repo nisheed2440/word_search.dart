@@ -20,8 +20,7 @@ void main() {
 
   /// The Puzzle output
   print('Puzzle 2D List');
-  final String output = wordSearch.printPuzzle(newPuzzle.puzzle);
-  print(output);
+  print(newPuzzle.toString());
 
   /// Solve puzzle for given word list
   final WSSolved solved = wordSearch.solvePuzzle(newPuzzle.puzzle, ['dart', 'word']);
