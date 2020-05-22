@@ -3,8 +3,8 @@ import 'dart:math';
 import 'src/orientations.dart';
 import 'src/check-orientations.dart';
 import 'src/skip-orientations.dart';
-import 'src/constants.dart';
-export 'src/constants.dart';
+import 'src/utils.dart';
+export 'src/utils.dart';
 
 /// The Word Search puzzle class
 ///

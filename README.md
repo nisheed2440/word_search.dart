@@ -1,3 +1,10 @@
+# word_search
+
+A word search puzzle generator built with dart
+
+Example:
+
+```dart
 import 'package:word_search/word-search.dart';
 
 /**
@@ -46,3 +53,4 @@ void main() {
     print('word: ${element}');
   });
 }
+```

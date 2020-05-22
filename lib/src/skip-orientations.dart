@@ -1,4 +1,4 @@
-import './constants.dart';
+import './utils.dart';
 
 final Map<WSOrientation, WSOrientationFn> wsSkipOrientations = {
   WSOrientation.horizontal: (int x, int y, int l) {

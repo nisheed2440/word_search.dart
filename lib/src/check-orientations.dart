@@ -1,4 +1,4 @@
-import './constants.dart';
+import './utils.dart';
 
 final Map<WSOrientation, WSCheckOrientationFn> wsCheckOrientations = {
   WSOrientation.horizontal: (int x, int y, int h, int w, int l) {
