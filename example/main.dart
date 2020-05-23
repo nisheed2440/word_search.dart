@@ -27,7 +27,7 @@ void main() {
   final WSNewPuzzle newPuzzle = wordSearch.newPuzzle(wl, ws);
 
   /// Check if there are errors generated while creating the puzzle
-  if (newPuzzle.errors.length == 0) {
+  if (newPuzzle.errors.isEmpty) {
     // The puzzle output
     print('Puzzle 2D List');
     print(newPuzzle.toString());

@@ -1,3 +1,5 @@
+## 0.1.2
+- Updated readme to be more user friendly
 ## 0.1.1
 - Updated pubspec file to have leaner description
 ## 0.1.0

@@ -1,5 +1,5 @@
 name: word_search
-version: 0.1.1
+version: 0.1.2
 description: A word search puzzle generator built with dart.This library allows you to create a puzzle from a list of input words that can be arranged in many orientations.
 
 repository: https://github.com/nisheed2440/word_search.dart

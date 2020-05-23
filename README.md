@@ -1,10 +1,12 @@
 # word_search
 
-![Coverage](https://raw.githubusercontent.com/nisheed2440/word_search.dart/master/coverage_badge.svg?version=0.0.1)
+![Coverage](https://raw.githubusercontent.com/nisheed2440/word_search.dart/master/coverage_badge.svg?version=0.1.1)
+
+![Word Search](https://raw.githubusercontent.com/nisheed2440/word_search.dart/master/word-search.png?version=0.1.1)
 
 A word search puzzle generator built with dart
 
-Example:
+### Example Usage
 
 ```dart
 import 'package:word_search/word_search.dart';
@@ -36,7 +38,7 @@ void main() {
   final WSNewPuzzle newPuzzle = wordSearch.newPuzzle(wl, ws);
 
   /// Check if there are errors generated while creating the puzzle
-  if (newPuzzle.errors.length == 0) {
+  if (newPuzzle.errors.isEmpty) {
     // The puzzle output
     print('Puzzle 2D List');
     print(newPuzzle.toString());
@@ -64,6 +66,9 @@ void main() {
   }
 }
 ```
+
+### Example Output
+![Word Search output](https://raw.githubusercontent.com/nisheed2440/word_search.dart/master/word-search.gif?version=0.1.1)
 
 ### Testing
 This library uses [`test_coverage`](https://pub.dev/packages/test_coverage) testing library.
