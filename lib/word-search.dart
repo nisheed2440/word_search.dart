@@ -253,7 +253,7 @@ class WordSearch {
       final WSPosition next = fnGetSquare(x, y, i);
       try {
         puzzle[next.y][next.x] = word[i];
-      } catch(e) {
+      } catch (e) {
         print(e);
         print(e.toString());
       }
@@ -317,10 +317,11 @@ class WordSearch {
       width: settings.width != null ? settings.width : maxWordLength,
       height: settings.height != null ? settings.height : maxWordLength,
       orientations: settings.orientations,
-      fillBlanks: settings.fillBlanks,
+      fillBlanks: settings.fillBlanks ?? true,
       maxAttempts: settings.maxAttempts,
       maxGridGrowth: settings.maxGridGrowth,
       preferOverlap: settings.preferOverlap,
+      allowExtraBlanks: settings.allowExtraBlanks,
     );
     while (puzzle == null) {
       while (puzzle == null && attempts++ < options.maxAttempts) {
@@ -344,7 +345,7 @@ class WordSearch {
       }
     }
     // fill in empty spaces with random letters
-    if (options.fillBlanks) {
+    if (options.fillBlanks != null) {
       List<String> lettersToAdd = [];
       int fillingBlanksCount = 0;
       int extraLettersCount = 0;
@@ -377,9 +378,7 @@ class WordSearch {
             .add('Some extra letters provided were not used: ${lettersToAdd}');
       }
       // Extra letters not filled in the grid if allow blanks is false
-      if (lettersToAdd.length > 0 &&
-          fillingBlanksCount > 0 &&
-          !options.allowExtraBlanks) {
+      if (fillingBlanksCount > 0 && !options.allowExtraBlanks) {
         output.errors.add(
             '${fillingBlanksCount} extra letters were missing to fill the grid');
         return output;

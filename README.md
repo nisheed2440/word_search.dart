@@ -1,5 +1,7 @@
 # word_search
 
+![Coverage](https://raw.githubusercontent.com/nisheed2440/word_search.dart/master/coverage_badge.svg?sanitize=true)
+
 A word search puzzle generator built with dart
 
 Example:
@@ -54,3 +56,20 @@ void main() {
   });
 }
 ```
+
+### Testing
+This library uses [`test_coverage`](https://pub.dev/packages/test_coverage) testing library.
+
+To run tests
+
+```bash
+pub run test_coverage
+```
+
+To view coverage report
+
+```bash
+genhtml -o coverage coverage/lcov.info
+```
+
+**Note:** If you do not have `genhtml` on your command line you can use `brew install lcov` on mac.

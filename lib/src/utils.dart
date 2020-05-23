@@ -43,7 +43,7 @@ class WSSettings {
     this.width,
     this.height,
     this.orientations = WSOrientation.values,
-    this.fillBlanks = true,
+    this.fillBlanks,
     this.allowExtraBlanks = true,
     this.maxAttempts = 3,
     this.maxGridGrowth = 10,
