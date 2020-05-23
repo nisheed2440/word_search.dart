@@ -148,7 +148,7 @@ class WSNewPuzzle {
   List<String> errors;
 
   WSNewPuzzle({
-    this.puzzle = null,
+    this.puzzle,
     List<String> wordsNotPlaced,
     List<String> warnings,
     List<String> errors,

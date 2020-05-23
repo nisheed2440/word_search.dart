@@ -78,7 +78,7 @@ class WordSearch {
     final List<WSLocation> locations =
         _findBestLocations(puzzle, options, word);
 
-    if (locations.length == 0) {
+    if (locations.isEmpty) {
       return false;
     }
 
@@ -310,7 +310,7 @@ class WordSearch {
   ) {
     // New instance of the output data
     WSNewPuzzle output = WSNewPuzzle();
-    if (words.length == 0) {
+    if (words.isEmpty) {
       output.errors.add('Zero words provided');
       return output;
     }
@@ -373,7 +373,7 @@ class WordSearch {
         // Use the simple array pop mechanism for the input string
         lettersToAdd.addAll(options.fillBlanks.toLowerCase().split(''));
         extraLetterGenerator = () {
-          if (lettersToAdd.length > 0) {
+          if (lettersToAdd.isNotEmpty) {
             return lettersToAdd.removeLast();
           }
           fillingBlanksCount += 1;
@@ -388,7 +388,7 @@ class WordSearch {
       // Fill all the blanks in the puzzle
       extraLettersCount = _fillBlanks(puzzle, extraLetterGenerator);
       // Warn the user that some letters were not used
-      if (lettersToAdd.length > 0) {
+      if (lettersToAdd.isNotEmpty) {
         output.warnings
             .add('Some extra letters provided were not used: ${lettersToAdd}');
       }
@@ -439,7 +439,7 @@ class WordSearch {
     for (var i = 0, len = words.length; i < len; i++) {
       final String word = words[i];
       List<WSLocation> locations = _findBestLocations(puzzle, options, word);
-      if (locations.length > 0 && locations[0].overlap == word.length) {
+      if (locations.isNotEmpty && locations[0].overlap == word.length) {
         locations[0].word = word;
         output.found.add(locations[0]);
       } else {
