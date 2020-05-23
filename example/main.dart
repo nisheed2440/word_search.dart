@@ -26,23 +26,31 @@ void main() {
   // Create a new puzzle
   final WSNewPuzzle newPuzzle = wordSearch.newPuzzle(wl, ws);
 
-  // The puzzle output
-  print('Puzzle 2D List');
-  print(newPuzzle.toString());
+  /// Check if there are errors generated while creating the puzzle
+  if (newPuzzle.errors.length == 0) {
+    // The puzzle output
+    print('Puzzle 2D List');
+    print(newPuzzle.toString());
 
-  // Solve puzzle for given word list
-  final WSSolved solved =
-      wordSearch.solvePuzzle(newPuzzle.puzzle, ['dart', 'word']);
-  // All found words by solving the puzzle
-  print('Found Words!');
-  solved.found.forEach((element) {
-    print('word: ${element.word}, orientation: ${element.orientation}');
-    print('x:${element.x}, y:${element.y}');
-  });
+    // Solve puzzle for given word list
+    final WSSolved solved =
+        wordSearch.solvePuzzle(newPuzzle.puzzle, ['dart', 'word']);
+    // All found words by solving the puzzle
+    print('Found Words!');
+    solved.found.forEach((element) {
+      print('word: ${element.word}, orientation: ${element.orientation}');
+      print('x:${element.x}, y:${element.y}');
+    });
 
-  // All words that could not be found
-  print('Not found Words!');
-  solved.notFound.forEach((element) {
-    print('word: ${element}');
-  });
+    // All words that could not be found
+    print('Not found Words!');
+    solved.notFound.forEach((element) {
+      print('word: ${element}');
+    });
+  } else {
+    // Notify the user of the errors
+    newPuzzle.errors.forEach((error) {
+      print(error);
+    });
+  }
 }

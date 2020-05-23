@@ -32,11 +32,11 @@ class WordSearch {
   ///
   /// Returns either a valid puzzle with all of the words or null if a valid
   /// puzzle was not found.
-  ///
-  /// [words]: The list of words to fit into the puzzle
-  /// [options]: The options to use when filling the puzzle
   List<List<String>> _fillPuzzle(
+    /// The list of words to fit into the puzzle
     List<String> words,
+
+    /// The options to use when filling the puzzle
     WSSettings options,
   ) {
     final List<List<String>> puzzle = [];
@@ -59,17 +59,19 @@ class WordSearch {
     return puzzle;
   }
 
-  /// If overlap maximization was indicated, this function is used to prune the
-  /// list of valid locations down to the ones that contain the maximum overlap
-  /// that was previously calculated.
+  /// Adds the specified word to the puzzle by finding all of the possible
+  /// locations where the word will fit and then randomly selecting one. Options
+  /// controls whether or not word overlap should be maximized.
   ///
-  /// Returns the pruned set of locations.
-  ///
-  /// [locations]: The set of locations to prune
-  /// [overlap]: The required level of overlap
+  /// Returns `true` if the word was successfully placed, `false` otherwise.
   bool _placeWordInPuzzle(
+    /// The current state of the puzzle
     List<List<String>> puzzle,
+
+    /// The options to use when filling the puzzle
     WSSettings options,
+
+    /// The word to fit into the puzzle
     String word,
   ) {
     // find all of the best locations where this word would fit
@@ -99,13 +101,14 @@ class WordSearch {
   /// Returns a list of location objects which contain an x,y cooridinate
   /// indicating the start of the word, the orientation of the word, and the
   /// number of letters that overlapped with existing letter.
-  ///
-  /// [puzzle]: The current state of the puzzle
-  /// [options]: The options to use when filling the puzzle
-  /// [word]: The word to fit into the puzzle.
   List<WSLocation> _findBestLocations(
+    /// The current state of the puzzle
     List<List<String>> puzzle,
+
+    /// The options to use when filling the puzzle
     WSSettings options,
+
+    /// The word to fit into the puzzle
     String word,
   ) {
     List<WSLocation> locations = [];
@@ -173,17 +176,20 @@ class WordSearch {
   ///
   /// Returns the number of letters overlapped with existing words if the word
   /// fits in the specified position, -1 if the word does not fit.
-  ///
-  /// [word]: The word to fit into the puzzle.
-  /// [puzzle]: The current state of the puzzle
-  /// [x]: The x position to check
-  /// [y]: The y position to check
-  /// [fnGetSquare]: Function that returns the next square
   int _calcOverlap(
+    /// The word to fit into the puzzle
     String word,
+
+    /// The current state of the puzzle
     List<List<String>> puzzle,
+
+    /// The x position to check
     int x,
+
+    /// The y position to check
     int y,
+
+    /// Function that returns the next square
     WSOrientationFn fnGetSquare,
   ) {
     int overlap = 0;
@@ -219,11 +225,11 @@ class WordSearch {
   /// that was previously calculated.
   ///
   /// Returns the pruned set of locations.
-  ///
-  /// [locations]: The set of locations to prune
-  /// [overlap]: The required level of overlap
   List<WSLocation> _pruneLocations(
+    /// The set of locations to prune
     List<WSLocation> locations,
+
+    /// The required level of overlap
     int overlap,
   ) {
     List<WSLocation> pruned = [];
@@ -236,17 +242,20 @@ class WordSearch {
   }
 
   /// Places a word in the puzzle given a starting position and orientation.
-  ///
-  /// [puzzle]: The current state of the puzzle
-  /// [word]: The word to fit into the puzzle.
-  /// [x]: The x position to check
-  /// [y]: The y position to check
-  /// [fnGetSquare]: Function that returns the next square
   void _placeWord(
+    /// The current state of the puzzle
     List<List<String>> puzzle,
+
+    ///  The word to fit into the puzzle
     String word,
+
+    /// The x position to check
     int x,
+
+    /// The y position to check
     int y,
+
+    /// Function that returns the next square
     WSOrientationFn fnGetSquare,
   ) {
     for (var i = 0; i < word.length; i++) {
@@ -261,10 +270,13 @@ class WordSearch {
   }
 
   /// Fills in any empty spaces in the puzzle with random letters.
-  ///
-  /// [puzzle]: The current state of the puzzle
-  /// [extraLetterGenerator]: Function to add extra letters to fill blanks
-  int _fillBlanks(List<List<String>> puzzle, Function extraLetterGenerator) {
+  int _fillBlanks(
+    /// The current state of the puzzle
+    List<List<String>> puzzle,
+
+    /// Function to add extra letters to fill blanks
+    Function extraLetterGenerator,
+  ) {
     int extraLettersCount = 0;
     for (var i = 0, height = puzzle.length; i < height; i++) {
       List<String> row = puzzle[i];
@@ -290,7 +302,10 @@ class WordSearch {
   /// ```
   ///
   WSNewPuzzle newPuzzle(
+    /// The words to be placed in the puzzle
     List<String> words,
+
+    /// The puzzle setting object
     WSSettings settings,
   ) {
     // New instance of the output data
@@ -408,7 +423,10 @@ class WordSearch {
   /// ```
   ///
   WSSolved solvePuzzle(
+    // The current state of the puzzle
     List<List<String>> puzzle,
+
+    /// The words to be searched in the puzzle
     List<String> words,
   ) {
     WSSettings options = WSSettings(
