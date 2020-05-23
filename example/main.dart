@@ -1,4 +1,4 @@
-import 'package:word_search/word-search.dart';
+import 'package:word_search/word_search.dart';
 
 /**
  * The main file to test out the word search library

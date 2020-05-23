@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:test/test.dart';
 
-import '../lib/word-search.dart';
+import '../lib/word_search.dart';
 
 void main() {
   test('should create error on empty word list', () {

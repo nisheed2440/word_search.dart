@@ -1,8 +1,8 @@
 import 'dart:math';
 
 import 'src/orientations.dart';
-import 'src/check-orientations.dart';
-import 'src/skip-orientations.dart';
+import 'src/check_orientations.dart';
+import 'src/skip_orientations.dart';
 import 'src/utils.dart';
 export 'src/utils.dart';
 
