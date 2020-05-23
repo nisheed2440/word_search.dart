@@ -1,6 +1,6 @@
 # word_search
 
-![Coverage](https://raw.githubusercontent.com/nisheed2440/word_search.dart/master/coverage_badge.svg?sanitize=true)
+![Coverage](https://raw.githubusercontent.com/nisheed2440/word_search.dart/master/coverage_badge.svg?version=0.0.1)
 
 A word search puzzle generator built with dart
 
