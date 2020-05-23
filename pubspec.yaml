@@ -1,11 +1,14 @@
 name: word_search
 version: 0.0.1
 description: A word search puzzle generator built with dart
+
 repository: https://github.com/nisheed2440/word_search.dart
 homepage: https://github.com/nisheed2440/word_search.dart
 issue_tracker: https://github.com/nisheed2440/word_search.dart/issues
+
 environment:
-    sdk: '<3.0.0'
+    sdk: ">=2.7.0 <3.0.0"
+
 dev_dependencies:
     test: ^1.14.5
     test_coverage: ^0.4.1
