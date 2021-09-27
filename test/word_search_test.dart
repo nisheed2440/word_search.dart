@@ -101,7 +101,8 @@ void main() {
       ['hello', 'world'],
       WSSettings(),
     );
-    WSSolved solved = wordSearch.solvePuzzle(newPuzzle.puzzle, ['hello', 'world', 'test']);
+    WSSolved solved =
+        wordSearch.solvePuzzle(newPuzzle.puzzle!, ['hello', 'world', 'test']);
     expect(solved.found.length, equals(2));
     expect(solved.notFound.length, equals(1));
   });

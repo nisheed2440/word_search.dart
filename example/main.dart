@@ -34,7 +34,7 @@ void main() {
 
     // Solve puzzle for given word list
     final WSSolved solved =
-        wordSearch.solvePuzzle(newPuzzle.puzzle, ['dart', 'word']);
+        wordSearch.solvePuzzle(newPuzzle.puzzle!, ['dart', 'word']);
     // All found words by solving the puzzle
     print('Found Words!');
     solved.found.forEach((element) {

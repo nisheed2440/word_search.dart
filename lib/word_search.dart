@@ -32,7 +32,7 @@ class WordSearch {
   ///
   /// Returns either a valid puzzle with all of the words or null if a valid
   /// puzzle was not found.
-  List<List<String>> _fillPuzzle(
+  List<List<String>>? _fillPuzzle(
     /// The list of words to fit into the puzzle
     List<String> words,
 
@@ -41,9 +41,9 @@ class WordSearch {
   ) {
     final List<List<String>> puzzle = [];
     // initialize the puzzle with blanks
-    for (var i = 0; i < options.height; i++) {
+    for (var i = 0; i < options.height!; i++) {
       puzzle.add([]);
-      for (var j = 0; j < options.width; j++) {
+      for (var j = 0; j < options.width!; j++) {
         puzzle[i].add('');
       }
     }
@@ -87,9 +87,9 @@ class WordSearch {
     _placeWord(
       puzzle,
       word,
-      sel.x,
-      sel.y,
-      orientations[sel.orientation],
+      sel.x!,
+      sel.y!,
+      orientations[sel.orientation]!,
     );
     return true;
   }
@@ -112,8 +112,8 @@ class WordSearch {
     String word,
   ) {
     List<WSLocation> locations = [];
-    int height = options.height;
-    int width = options.width;
+    int height = options.height!;
+    int width = options.width!;
     int wordLength = word.length;
     // we'll start looking at overlap = 0
     int maxOverlap = 0;
@@ -121,9 +121,9 @@ class WordSearch {
     // loop through all of the possible orientations at this position
     for (var i = 0; i < options.orientations.length; i++) {
       final WSOrientation orientation = options.orientations[i];
-      final WSOrientationFn next = orientations[orientation];
-      final WSCheckOrientationFn check = _checkOrientations[orientation];
-      final WSOrientationFn skip = _skipOrientations[orientation];
+      final WSOrientationFn next = orientations[orientation]!;
+      final WSCheckOrientationFn check = _checkOrientations[orientation]!;
+      final WSOrientationFn skip = _skipOrientations[orientation]!;
       int x = 0;
       int y = 0;
       // loop through every position on the board
@@ -158,8 +158,8 @@ class WordSearch {
           // this orientation is possible. this greatly reduces the number
           // of checks that we have to do overall
           WSPosition nextPossible = skip(x, y, wordLength);
-          x = nextPossible.x;
-          y = nextPossible.y;
+          x = nextPossible.x!;
+          y = nextPossible.y!;
         }
       }
     }
@@ -197,9 +197,9 @@ class WordSearch {
     // traverse the squares to determine if the word fits
     for (var i = 0; i < word.length; i++) {
       final WSPosition next = fnGetSquare(x, y, i);
-      String square;
+      String? square;
       try {
-        square = puzzle[next.y][next.x];
+        square = puzzle[next.y!][next.x!];
       } catch (_e) {
         square = null;
       }
@@ -234,7 +234,7 @@ class WordSearch {
   ) {
     List<WSLocation> pruned = [];
     for (var i = 0; i < locations.length; i++) {
-      if (locations[i].overlap >= overlap) {
+      if (locations[i].overlap! >= overlap) {
         pruned.add(locations[i]);
       }
     }
@@ -261,7 +261,7 @@ class WordSearch {
     for (var i = 0; i < word.length; i++) {
       final WSPosition next = fnGetSquare(x, y, i);
       try {
-        puzzle[next.y][next.x] = word[i];
+        puzzle[next.y!][next.x!] = word[i];
       } catch (e) {
         print(e);
         print(e.toString());
@@ -314,7 +314,7 @@ class WordSearch {
       output.errors.add('Zero words provided');
       return output;
     }
-    List<List<String>> puzzle;
+    List<List<String>>? puzzle;
     int attempts = 0;
     int gridGrowths = 0;
 
@@ -354,8 +354,10 @@ class WordSearch {
           return output;
         }
         print('Trying a bigger grid after ${attempts - 1}');
-        options.height += 1;
-        options.width += 1;
+        options.height =
+            options.height != null ? options.height! + 1 : options.height;
+        options.width =
+            options.width != null ? options.width! + 1 : options.width;
         attempts = 0;
       }
     }
@@ -399,7 +401,7 @@ class WordSearch {
         return output;
       }
       gridFillPercent =
-          100 * (1 - extraLettersCount / (options.width * options.height));
+          100 * (1 - extraLettersCount / (options.width! * options.height!));
       print('Blanks filled with ${extraLettersCount} random letters');
       print('Final grid is filled at ${gridFillPercent.toStringAsFixed(0)}%');
     }
