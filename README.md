@@ -20,7 +20,7 @@ void main() {
   // Create a list of words to be jumbled into a puzzle
   final List<String> wl = ['hello', 'world', 'foo', 'bar', 'baz', 'dart'];
 
-  // Create the puzzle sessting object
+  // Create the puzzle settings object
   final WSSettings ws = WSSettings(
     width: 10,
     height: 10,
